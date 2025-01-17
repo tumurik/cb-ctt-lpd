@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plannerBenchmark xmlns="https://timefold.ai/xsd/benchmark" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://timefold.ai/xsd/benchmark https://timefold.ai/xsd/benchmark/benchmark.xsd">
+
+    <benchmarkDirectory>local/data/</benchmarkDirectory>
+
+    <inheritedSolverBenchmark>
+        <solver>
+            <solutionClass>org.acme.schooltimetabling.domain.Timetable</solutionClass>
+            <entityClass>org.acme.schooltimetabling.domain.Course</entityClass>
+
+            <scoreDirectorFactory>
+                <easyScoreCalculatorClass>org.acme.schooltimetabling.solver.EasyCostFunction</easyScoreCalculatorClass>
+            </scoreDirectorFactory>
+        </solver>
+        <problemBenchmarks>
+            <inputSolutionFile>datasets/comp001.ctt</inputSolutionFile>
+            <inputSolutionFile>datasets/comp008.ctt</inputSolutionFile>
+            <singleStatisticType>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</singleStatisticType>
+            <singleStatisticType>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</singleStatisticType>
+        </problemBenchmarks>
+    </inheritedSolverBenchmark>
+
+<!--    <list ["1hard/10soft", "1hard/20soft", "1hard/50soft", "1hard/70soft"] as startingTemperature>-->
+    <solverBenchmark>
+        <name>Simulated Annealing startingTemperature ${startingTemperature?replace("/", "_")}</name>
+        <solver>
+            <localSearch>
+                <acceptor>
+                    <simulatedAnnealingStartingTemperature>${startingTemperature}</simulatedAnnealingStartingTemperature>
+                </acceptor>
+            </localSearch>
+        </solver>
+    </solverBenchmark>
+<!--    </list>-->
+
+    <solverBenchmark>
+        <name>LAHC</name>
+        <solver>
+            <localSearch>
+                <unionMoveSelector>
+                    <subListChangeMoveSelector />
+                    <listChangeMoveSelector />
+                    <listSwapMoveSelector />
+                </unionMoveSelector>
+                <acceptor>
+                    <lateAcceptanceSize>100</lateAcceptanceSize>
+                </acceptor>
+                <forager>
+                    <acceptedCountLimit>1</acceptedCountLimit>
+                </forager>
+            </localSearch>
+        </solver>
+    </solverBenchmark>
+
+</plannerBenchmark>
