@@ -8,8 +8,13 @@
 
     <!-- Score Calculation -->
     <scoreDirectorFactory>
-        <easyScoreCalculatorClass>org.acme.schooltimetabling.solver.EasyCostFunction</easyScoreCalculatorClass>
+        <constraintProviderClass>org.acme.schooltimetabling.solver.TimetableConstraintProvider</constraintProviderClass>
     </scoreDirectorFactory>
+
+    <!-- Time Limitation -->
+    <termination>
+        <secondsSpentLimit>5</secondsSpentLimit>
+    </termination>
 
     <!-- Construction Heuristic -->
     <constructionHeuristic />
