@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?><plannerBenchmarkResult>
+  <name>2025-01-20_171701</name>
+  <aggregation>false</aggregation>
+  <availableProcessors>8</availableProcessors>
+  <loggingLevelTimefoldSolverCore>TRACE</loggingLevelTimefoldSolverCore>
+  <maxMemory>4284481536</maxMemory>
+  <timefoldSolverVersion>Community Edition v1.18.0</timefoldSolverVersion>
+  <javaVersion>Java 21.0.4 (Oracle Corporation)</javaVersion>
+  <javaVM>Java Java HotSpot(TM) 64-Bit Server VM 21.0.4+8-LTS-274 (Oracle Corporation)</javaVM>
+  <operatingSystem>Windows 10 amd64 10.0</operatingSystem>
+  <parallelBenchmarkCount>1</parallelBenchmarkCount>
+  <warmUpTimeMillisSpentLimit>30</warmUpTimeMillisSpentLimit>
+  <solverBenchmarkResult>
+    <name>Simulated Annealing startingTemperature 1hard20soft</name>
+    <subSingleCount>1</subSingleCount>
+    <solverConfig>
+      <monitoring>
+        <metric>BEST_SCORE</metric>
+        <metric>STEP_SCORE</metric>
+        <metric>SCORE_CALCULATION_COUNT</metric>
+        <metric>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</metric>
+        <metric>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</metric>
+      </monitoring>
+      <solutionClass>org.acme.schooltimetabling.domain.Timetable</solutionClass>
+      <entityClass>org.acme.schooltimetabling.domain.Lecture</entityClass>
+      <scoreDirectorFactory>
+        <constraintProviderClass>org.acme.schooltimetabling.solver.TimetableConstraintProvider</constraintProviderClass>
+      </scoreDirectorFactory>
+      <termination>
+        <minutesSpentLimit>1</minutesSpentLimit>
+      </termination>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch>
+        <unionMoveSelector>
+          <changeMoveSelector/>
+        </unionMoveSelector>
+        <acceptor>
+          <simulatedAnnealingStartingTemperature>1hard/20soft</simulatedAnnealingStartingTemperature>
+        </acceptor>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult id="1">
+      <subSingleBenchmarkResult>
+        <subSingleBenchmarkIndex>0</subSingleBenchmarkIndex>
+        <pickedMoveTypeBestScoreDiffSubSingleStatistic>
+          <singleStatisticType>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</singleStatisticType>
+        </pickedMoveTypeBestScoreDiffSubSingleStatistic>
+        <constraintMatchTotalBestScoreSubSingleStatistic>
+          <singleStatisticType>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</singleStatisticType>
+        </constraintMatchTotalBestScoreSubSingleStatistic>
+        <usedMemoryAfterInputSolution>55874144</usedMemoryAfterInputSolution>
+        <succeeded>true</succeeded>
+        <score class="ai.timefold.solver.core.api.score.buildin.hardsoft.HardSoftScore">0hard/-6soft</score>
+        <timeMillisSpent>60000</timeMillisSpent>
+        <scoreCalculationCount>3721829</scoreCalculationCount>
+        <moveEvaluationCount>3721828</moveEvaluationCount>
+        <scoreExplanationSummary>Explanation of score (0hard/-6soft):
+    Constraint matches:
+        -6soft: constraint (Room capacity exceeded) has 6 matches:
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@4439621a])
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@62ac19c])
+            ...
+        0: constraint (All lectures must be scheduled) has 0 matches:
+        0: constraint (Curriculum conflict) has 0 matches:
+        0: constraint (Room occupancy conflict) has 0 matches:
+        0: constraint (Room stability violated) has 0 matches:
+        0: constraint (Teacher and course unavailability conflict) has 0 matches:
+        0: constraint (Teacher conflict) has 0 matches:
+    Indictments (top 5 of 6):
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@4439621a) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@62ac19c) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@72d21c64) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@217bbe6a) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@2e5d21ed) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        ...
+</scoreExplanationSummary>
+      </subSingleBenchmarkResult>
+      <timeMillisSpent>-1</timeMillisSpent>
+      <scoreCalculationCount>-1</scoreCalculationCount>
+      <moveEvaluationCount>-1</moveEvaluationCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult>
+    <name>Simulated Annealing startingTemperature 1hard70soft</name>
+    <subSingleCount>1</subSingleCount>
+    <solverConfig>
+      <monitoring>
+        <metric>BEST_SCORE</metric>
+        <metric>STEP_SCORE</metric>
+        <metric>SCORE_CALCULATION_COUNT</metric>
+        <metric>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</metric>
+        <metric>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</metric>
+      </monitoring>
+      <solutionClass>org.acme.schooltimetabling.domain.Timetable</solutionClass>
+      <entityClass>org.acme.schooltimetabling.domain.Lecture</entityClass>
+      <scoreDirectorFactory>
+        <constraintProviderClass>org.acme.schooltimetabling.solver.TimetableConstraintProvider</constraintProviderClass>
+      </scoreDirectorFactory>
+      <termination>
+        <minutesSpentLimit>1</minutesSpentLimit>
+      </termination>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch>
+        <unionMoveSelector>
+          <changeMoveSelector/>
+        </unionMoveSelector>
+        <acceptor>
+          <simulatedAnnealingStartingTemperature>1hard/70soft</simulatedAnnealingStartingTemperature>
+        </acceptor>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult id="2">
+      <subSingleBenchmarkResult>
+        <subSingleBenchmarkIndex>0</subSingleBenchmarkIndex>
+        <pickedMoveTypeBestScoreDiffSubSingleStatistic>
+          <singleStatisticType>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</singleStatisticType>
+        </pickedMoveTypeBestScoreDiffSubSingleStatistic>
+        <constraintMatchTotalBestScoreSubSingleStatistic>
+          <singleStatisticType>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</singleStatisticType>
+        </constraintMatchTotalBestScoreSubSingleStatistic>
+        <usedMemoryAfterInputSolution>55870848</usedMemoryAfterInputSolution>
+        <succeeded>true</succeeded>
+        <score class="ai.timefold.solver.core.api.score.buildin.hardsoft.HardSoftScore">0hard/-11soft</score>
+        <timeMillisSpent>60000</timeMillisSpent>
+        <scoreCalculationCount>3635286</scoreCalculationCount>
+        <moveEvaluationCount>3635285</moveEvaluationCount>
+        <scoreExplanationSummary>Explanation of score (0hard/-11soft):
+    Constraint matches:
+        -6soft: constraint (Room capacity exceeded) has 6 matches:
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@3e1944f0])
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@4e825e1])
+            ...
+        -5soft: constraint (Room stability violated) has 5 matches:
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@5443fdda, org.acme.schooltimetabling.domain.Lecture@4566a7a9])
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@4c6f715c, org.acme.schooltimetabling.domain.Lecture@4566a7a9])
+            ...
+        0: constraint (All lectures must be scheduled) has 0 matches:
+        0: constraint (Curriculum conflict) has 0 matches:
+        0: constraint (Room occupancy conflict) has 0 matches:
+        0: constraint (Teacher and course unavailability conflict) has 0 matches:
+        0: constraint (Teacher conflict) has 0 matches:
+    Indictments (top 5 of 12):
+        -5soft: indicted with (org.acme.schooltimetabling.domain.Lecture@4566a7a9) has 5 matches:
+            -1soft: constraint (Room stability violated)
+            -1soft: constraint (Room stability violated)
+            ...
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@5443fdda) has 1 matches:
+            -1soft: constraint (Room stability violated)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@4c6f715c) has 1 matches:
+            -1soft: constraint (Room stability violated)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@389c692b) has 1 matches:
+            -1soft: constraint (Room stability violated)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@e80268e) has 1 matches:
+            -1soft: constraint (Room stability violated)
+        ...
+</scoreExplanationSummary>
+      </subSingleBenchmarkResult>
+      <timeMillisSpent>-1</timeMillisSpent>
+      <scoreCalculationCount>-1</scoreCalculationCount>
+      <moveEvaluationCount>-1</moveEvaluationCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult>
+    <name>LAHC 100</name>
+    <subSingleCount>1</subSingleCount>
+    <solverConfig>
+      <monitoring>
+        <metric>BEST_SCORE</metric>
+        <metric>STEP_SCORE</metric>
+        <metric>SCORE_CALCULATION_COUNT</metric>
+        <metric>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</metric>
+        <metric>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</metric>
+      </monitoring>
+      <solutionClass>org.acme.schooltimetabling.domain.Timetable</solutionClass>
+      <entityClass>org.acme.schooltimetabling.domain.Lecture</entityClass>
+      <scoreDirectorFactory>
+        <constraintProviderClass>org.acme.schooltimetabling.solver.TimetableConstraintProvider</constraintProviderClass>
+      </scoreDirectorFactory>
+      <termination>
+        <minutesSpentLimit>1</minutesSpentLimit>
+      </termination>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch>
+        <unionMoveSelector>
+          <changeMoveSelector/>
+        </unionMoveSelector>
+        <acceptor>
+          <lateAcceptanceSize>100</lateAcceptanceSize>
+        </acceptor>
+        <forager>
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult id="3">
+      <subSingleBenchmarkResult>
+        <subSingleBenchmarkIndex>0</subSingleBenchmarkIndex>
+        <pickedMoveTypeBestScoreDiffSubSingleStatistic>
+          <singleStatisticType>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</singleStatisticType>
+        </pickedMoveTypeBestScoreDiffSubSingleStatistic>
+        <constraintMatchTotalBestScoreSubSingleStatistic>
+          <singleStatisticType>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</singleStatisticType>
+        </constraintMatchTotalBestScoreSubSingleStatistic>
+        <usedMemoryAfterInputSolution>55888416</usedMemoryAfterInputSolution>
+        <succeeded>true</succeeded>
+        <score class="ai.timefold.solver.core.api.score.buildin.hardsoft.HardSoftScore">0hard/-6soft</score>
+        <timeMillisSpent>60000</timeMillisSpent>
+        <scoreCalculationCount>6242335</scoreCalculationCount>
+        <moveEvaluationCount>6242334</moveEvaluationCount>
+        <scoreExplanationSummary>Explanation of score (0hard/-6soft):
+    Constraint matches:
+        -6soft: constraint (Room capacity exceeded) has 6 matches:
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@1b0515c7])
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@229b4d55])
+            ...
+        0: constraint (All lectures must be scheduled) has 0 matches:
+        0: constraint (Curriculum conflict) has 0 matches:
+        0: constraint (Room occupancy conflict) has 0 matches:
+        0: constraint (Room stability violated) has 0 matches:
+        0: constraint (Teacher and course unavailability conflict) has 0 matches:
+        0: constraint (Teacher conflict) has 0 matches:
+    Indictments (top 5 of 6):
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@1b0515c7) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@229b4d55) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@53af5c12) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@6ce436f5) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@5ffcbd83) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        ...
+</scoreExplanationSummary>
+      </subSingleBenchmarkResult>
+      <timeMillisSpent>-1</timeMillisSpent>
+      <scoreCalculationCount>-1</scoreCalculationCount>
+      <moveEvaluationCount>-1</moveEvaluationCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult>
+    <name>LAHC 500</name>
+    <subSingleCount>1</subSingleCount>
+    <solverConfig>
+      <monitoring>
+        <metric>BEST_SCORE</metric>
+        <metric>STEP_SCORE</metric>
+        <metric>SCORE_CALCULATION_COUNT</metric>
+        <metric>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</metric>
+        <metric>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</metric>
+      </monitoring>
+      <solutionClass>org.acme.schooltimetabling.domain.Timetable</solutionClass>
+      <entityClass>org.acme.schooltimetabling.domain.Lecture</entityClass>
+      <scoreDirectorFactory>
+        <constraintProviderClass>org.acme.schooltimetabling.solver.TimetableConstraintProvider</constraintProviderClass>
+      </scoreDirectorFactory>
+      <termination>
+        <minutesSpentLimit>1</minutesSpentLimit>
+      </termination>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch>
+        <unionMoveSelector>
+          <changeMoveSelector/>
+        </unionMoveSelector>
+        <acceptor>
+          <lateAcceptanceSize>500</lateAcceptanceSize>
+        </acceptor>
+        <forager>
+          <acceptedCountLimit>1</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult id="4">
+      <subSingleBenchmarkResult>
+        <subSingleBenchmarkIndex>0</subSingleBenchmarkIndex>
+        <pickedMoveTypeBestScoreDiffSubSingleStatistic>
+          <singleStatisticType>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</singleStatisticType>
+        </pickedMoveTypeBestScoreDiffSubSingleStatistic>
+        <constraintMatchTotalBestScoreSubSingleStatistic>
+          <singleStatisticType>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</singleStatisticType>
+        </constraintMatchTotalBestScoreSubSingleStatistic>
+        <usedMemoryAfterInputSolution>55906264</usedMemoryAfterInputSolution>
+        <succeeded>true</succeeded>
+        <score class="ai.timefold.solver.core.api.score.buildin.hardsoft.HardSoftScore">0hard/-9soft</score>
+        <timeMillisSpent>60000</timeMillisSpent>
+        <scoreCalculationCount>5725162</scoreCalculationCount>
+        <moveEvaluationCount>5725161</moveEvaluationCount>
+        <scoreExplanationSummary>Explanation of score (0hard/-9soft):
+    Constraint matches:
+        -7soft: constraint (Room capacity exceeded) has 7 matches:
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@4a213287])
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@4dded6a0])
+            ...
+        -2soft: constraint (Room stability violated) has 2 matches:
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@6d7e1c6, org.acme.schooltimetabling.domain.Lecture@49158df9])
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@6d7e1c6, org.acme.schooltimetabling.domain.Lecture@bc57830])
+        0: constraint (All lectures must be scheduled) has 0 matches:
+        0: constraint (Curriculum conflict) has 0 matches:
+        0: constraint (Room occupancy conflict) has 0 matches:
+        0: constraint (Teacher and course unavailability conflict) has 0 matches:
+        0: constraint (Teacher conflict) has 0 matches:
+    Indictments (top 5 of 10):
+        -2soft: indicted with (org.acme.schooltimetabling.domain.Lecture@6d7e1c6) has 2 matches:
+            -1soft: constraint (Room stability violated)
+            -1soft: constraint (Room stability violated)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@49158df9) has 1 matches:
+            -1soft: constraint (Room stability violated)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@bc57830) has 1 matches:
+            -1soft: constraint (Room stability violated)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@4a213287) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@4dded6a0) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        ...
+</scoreExplanationSummary>
+      </subSingleBenchmarkResult>
+      <timeMillisSpent>-1</timeMillisSpent>
+      <scoreCalculationCount>-1</scoreCalculationCount>
+      <moveEvaluationCount>-1</moveEvaluationCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult>
+    <name>Tabu 3 500</name>
+    <subSingleCount>1</subSingleCount>
+    <solverConfig>
+      <monitoring>
+        <metric>BEST_SCORE</metric>
+        <metric>STEP_SCORE</metric>
+        <metric>SCORE_CALCULATION_COUNT</metric>
+        <metric>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</metric>
+        <metric>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</metric>
+      </monitoring>
+      <solutionClass>org.acme.schooltimetabling.domain.Timetable</solutionClass>
+      <entityClass>org.acme.schooltimetabling.domain.Lecture</entityClass>
+      <scoreDirectorFactory>
+        <constraintProviderClass>org.acme.schooltimetabling.solver.TimetableConstraintProvider</constraintProviderClass>
+      </scoreDirectorFactory>
+      <termination>
+        <minutesSpentLimit>1</minutesSpentLimit>
+      </termination>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch>
+        <unionMoveSelector>
+          <changeMoveSelector/>
+        </unionMoveSelector>
+        <acceptor>
+          <valueTabuSize>5</valueTabuSize>
+        </acceptor>
+        <forager>
+          <acceptedCountLimit>500</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult id="5">
+      <subSingleBenchmarkResult>
+        <subSingleBenchmarkIndex>0</subSingleBenchmarkIndex>
+        <pickedMoveTypeBestScoreDiffSubSingleStatistic>
+          <singleStatisticType>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</singleStatisticType>
+        </pickedMoveTypeBestScoreDiffSubSingleStatistic>
+        <constraintMatchTotalBestScoreSubSingleStatistic>
+          <singleStatisticType>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</singleStatisticType>
+        </constraintMatchTotalBestScoreSubSingleStatistic>
+        <usedMemoryAfterInputSolution>55925784</usedMemoryAfterInputSolution>
+        <succeeded>true</succeeded>
+        <score class="ai.timefold.solver.core.api.score.buildin.hardsoft.HardSoftScore">0hard/-6soft</score>
+        <timeMillisSpent>60000</timeMillisSpent>
+        <scoreCalculationCount>6525481</scoreCalculationCount>
+        <moveEvaluationCount>6525480</moveEvaluationCount>
+        <scoreExplanationSummary>Explanation of score (0hard/-6soft):
+    Constraint matches:
+        -6soft: constraint (Room capacity exceeded) has 6 matches:
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@4e3740cc])
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@6abb2a8b])
+            ...
+        0: constraint (All lectures must be scheduled) has 0 matches:
+        0: constraint (Curriculum conflict) has 0 matches:
+        0: constraint (Room occupancy conflict) has 0 matches:
+        0: constraint (Room stability violated) has 0 matches:
+        0: constraint (Teacher and course unavailability conflict) has 0 matches:
+        0: constraint (Teacher conflict) has 0 matches:
+    Indictments (top 5 of 6):
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@4e3740cc) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@6abb2a8b) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@151e73b) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@685c110c) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        -1soft: indicted with (org.acme.schooltimetabling.domain.Lecture@1c990deb) has 1 matches:
+            -1soft: constraint (Room capacity exceeded)
+        ...
+</scoreExplanationSummary>
+      </subSingleBenchmarkResult>
+      <timeMillisSpent>-1</timeMillisSpent>
+      <scoreCalculationCount>-1</scoreCalculationCount>
+      <moveEvaluationCount>-1</moveEvaluationCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <solverBenchmarkResult>
+    <name>Tabu 10 2000</name>
+    <subSingleCount>1</subSingleCount>
+    <solverConfig>
+      <monitoring>
+        <metric>BEST_SCORE</metric>
+        <metric>STEP_SCORE</metric>
+        <metric>SCORE_CALCULATION_COUNT</metric>
+        <metric>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</metric>
+        <metric>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</metric>
+      </monitoring>
+      <solutionClass>org.acme.schooltimetabling.domain.Timetable</solutionClass>
+      <entityClass>org.acme.schooltimetabling.domain.Lecture</entityClass>
+      <scoreDirectorFactory>
+        <constraintProviderClass>org.acme.schooltimetabling.solver.TimetableConstraintProvider</constraintProviderClass>
+      </scoreDirectorFactory>
+      <termination>
+        <minutesSpentLimit>1</minutesSpentLimit>
+      </termination>
+      <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+      </constructionHeuristic>
+      <localSearch>
+        <unionMoveSelector>
+          <changeMoveSelector/>
+        </unionMoveSelector>
+        <acceptor>
+          <valueTabuSize>10</valueTabuSize>
+        </acceptor>
+        <forager>
+          <acceptedCountLimit>2000</acceptedCountLimit>
+        </forager>
+      </localSearch>
+    </solverConfig>
+    <singleBenchmarkResult id="6">
+      <subSingleBenchmarkResult>
+        <subSingleBenchmarkIndex>0</subSingleBenchmarkIndex>
+        <pickedMoveTypeBestScoreDiffSubSingleStatistic>
+          <singleStatisticType>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</singleStatisticType>
+        </pickedMoveTypeBestScoreDiffSubSingleStatistic>
+        <constraintMatchTotalBestScoreSubSingleStatistic>
+          <singleStatisticType>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</singleStatisticType>
+        </constraintMatchTotalBestScoreSubSingleStatistic>
+        <usedMemoryAfterInputSolution>55942688</usedMemoryAfterInputSolution>
+        <succeeded>true</succeeded>
+        <score class="ai.timefold.solver.core.api.score.buildin.hardsoft.HardSoftScore">0hard/-87soft</score>
+        <timeMillisSpent>60000</timeMillisSpent>
+        <scoreCalculationCount>6402124</scoreCalculationCount>
+        <moveEvaluationCount>6402123</moveEvaluationCount>
+        <scoreExplanationSummary>Explanation of score (0hard/-87soft):
+    Constraint matches:
+        -56soft: constraint (Room capacity exceeded) has 8 matches:
+            -25soft: justified with ([org.acme.schooltimetabling.domain.Lecture@77118533])
+            -25soft: justified with ([org.acme.schooltimetabling.domain.Lecture@345190e0])
+            ...
+        -31soft: constraint (Room stability violated) has 31 matches:
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@50d613ce, org.acme.schooltimetabling.domain.Lecture@523ff27])
+            -1soft: justified with ([org.acme.schooltimetabling.domain.Lecture@523ff27, org.acme.schooltimetabling.domain.Lecture@50546c90])
+            ...
+        0: constraint (All lectures must be scheduled) has 0 matches:
+        0: constraint (Curriculum conflict) has 0 matches:
+        0: constraint (Room occupancy conflict) has 0 matches:
+        0: constraint (Teacher and course unavailability conflict) has 0 matches:
+        0: constraint (Teacher conflict) has 0 matches:
+    Indictments (top 5 of 24):
+        -31soft: indicted with (org.acme.schooltimetabling.domain.Lecture@77118533) has 7 matches:
+            -25soft: constraint (Room capacity exceeded)
+            -1soft: constraint (Room stability violated)
+            ...
+        -31soft: indicted with (org.acme.schooltimetabling.domain.Lecture@345190e0) has 7 matches:
+            -25soft: constraint (Room capacity exceeded)
+            -1soft: constraint (Room stability violated)
+            ...
+        -6soft: indicted with (org.acme.schooltimetabling.domain.Lecture@56bbef1c) has 6 matches:
+            -1soft: constraint (Room stability violated)
+            -1soft: constraint (Room stability violated)
+            ...
+        -6soft: indicted with (org.acme.schooltimetabling.domain.Lecture@3b7235c7) has 6 matches:
+            -1soft: constraint (Room stability violated)
+            -1soft: constraint (Room stability violated)
+            ...
+        -4soft: indicted with (org.acme.schooltimetabling.domain.Lecture@1e9257e7) has 4 matches:
+            -1soft: constraint (Room stability violated)
+            -1soft: constraint (Room stability violated)
+            ...
+        ...
+</scoreExplanationSummary>
+      </subSingleBenchmarkResult>
+      <timeMillisSpent>-1</timeMillisSpent>
+      <scoreCalculationCount>-1</scoreCalculationCount>
+      <moveEvaluationCount>-1</moveEvaluationCount>
+    </singleBenchmarkResult>
+  </solverBenchmarkResult>
+  <unifiedProblemBenchmarkResult>
+    <name>comp01</name>
+    <fileProblemProvider/>
+    <writeOutputSolutionEnabled>true</writeOutputSolutionEnabled>
+    <bestScoreProblemStatistic>
+      <problemStatisticType>BEST_SCORE</problemStatisticType>
+    </bestScoreProblemStatistic>
+    <stepScoreProblemStatistic>
+      <problemStatisticType>STEP_SCORE</problemStatisticType>
+    </stepScoreProblemStatistic>
+    <scoreCalculationSpeedProblemStatistic>
+      <problemStatisticType>SCORE_CALCULATION_SPEED</problemStatisticType>
+      <reportFileName>scoreCalculationSpeedProblemStatisticChart</reportFileName>
+      <reportTitle>comp01 score calculation speed statistic</reportTitle>
+      <yLabel>Score calculation speed per second</yLabel>
+    </scoreCalculationSpeedProblemStatistic>
+    <singleBenchmarkResult>1</singleBenchmarkResult>
+    <singleBenchmarkResult>2</singleBenchmarkResult>
+    <singleBenchmarkResult>3</singleBenchmarkResult>
+    <singleBenchmarkResult>4</singleBenchmarkResult>
+    <singleBenchmarkResult>5</singleBenchmarkResult>
+    <singleBenchmarkResult>6</singleBenchmarkResult>
+    <entityCount>160</entityCount>
+    <variableCount>480</variableCount>
+    <maximumValueCount>17</maximumValueCount>
+    <problemScale>360843551</problemScale>
+    <inputSolutionLoadingTimeMillisSpent>1</inputSolutionLoadingTimeMillisSpent>
+  </unifiedProblemBenchmarkResult>
+  <startingTimestamp>2025-01-20T17:17:01.3113509+02:00</startingTimestamp>
+  <benchmarkTimeMillisSpent>362171</benchmarkTimeMillisSpent>
+</plannerBenchmarkResult>

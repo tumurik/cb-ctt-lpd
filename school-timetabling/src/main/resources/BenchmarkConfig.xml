@@ -17,27 +17,44 @@
                 <constraintProviderClass>org.acme.schooltimetabling.solver.TimetableConstraintProvider</constraintProviderClass>
             </scoreDirectorFactory>
 
+            <termination>
+                <minutesSpentLimit>1</minutesSpentLimit>
+            </termination>
+
         </solver>
         <problemBenchmarks>
-            <inputSolutionFile>datasets/comp001.ctt</inputSolutionFile>
-            <inputSolutionFile>datasets/comp008.ctt</inputSolutionFile>
+            <solutionFileIOClass>org.acme.schooltimetabling.domain.TimetableSolutionFileIO</solutionFileIOClass>
+            <writeOutputSolutionEnabled>true</writeOutputSolutionEnabled>
+<!--            <inputSolutionFile>src/main/resources/datasets/comp00.ctt</inputSolutionFile>-->
+            <inputSolutionFile>src/main/resources/datasets/comp01.ctt</inputSolutionFile>
             <problemStatisticType>BEST_SCORE</problemStatisticType>
             <problemStatisticType>STEP_SCORE</problemStatisticType>
+            <problemStatisticType>SCORE_CALCULATION_SPEED</problemStatisticType>
             <singleStatisticType>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</singleStatisticType>
             <singleStatisticType>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</singleStatisticType>
         </problemBenchmarks>
     </inheritedSolverBenchmark>
 
-<!--
-<list ["1hard/10soft", "1hard/20soft", "1hard/50soft", "1hard/70soft"] as startingTemperature>
-</list>
-${startingTemperature}
--->
 
+<!-- add warmup -->
+<!--
+"1hard/10soft", "1hard/20soft", "1hard/50soft", "1hard/70soft"
+-->
+<!--
+CONSTRUCTION_HEURISTIC_WITH_AND_WITHOUT_LOCAL_SEARCH ; EVERY_CONSTRUCTION_HEURISTIC_TYPE ;
+ EVERY_LOCAL_SEARCH_TYPE ; EVERY_CONSTRUCTION_HEURISTIC_TYPE_WITH_EVERY_LOCAL_SEARCH_TYPE
+ swapMoveSelector
+ -->
     <solverBenchmark>
         <name>Simulated Annealing startingTemperature 1hard20soft</name>
         <solver>
+            <constructionHeuristic>
+                <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+            </constructionHeuristic>
             <localSearch>
+                <unionMoveSelector>
+                    <changeMoveSelector />
+                </unionMoveSelector>
                 <acceptor>
                     <simulatedAnnealingStartingTemperature>1hard/20soft</simulatedAnnealingStartingTemperature>
                 </acceptor>
@@ -46,11 +63,17 @@ ${startingTemperature}
     </solverBenchmark>
 
     <solverBenchmark>
-        <name>Simulated Annealing startingTemperature 1hard50soft</name>
+        <name>Simulated Annealing startingTemperature 1hard70soft</name>
         <solver>
+            <constructionHeuristic>
+                <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+            </constructionHeuristic>
             <localSearch>
+                <unionMoveSelector>
+                    <changeMoveSelector />
+                </unionMoveSelector>
                 <acceptor>
-                    <simulatedAnnealingStartingTemperature>1hard/50soft</simulatedAnnealingStartingTemperature>
+                    <simulatedAnnealingStartingTemperature>1hard/70soft</simulatedAnnealingStartingTemperature>
                 </acceptor>
             </localSearch>
         </solver>
@@ -59,11 +82,12 @@ ${startingTemperature}
     <solverBenchmark>
         <name>LAHC 100</name>
         <solver>
+            <constructionHeuristic>
+                <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+            </constructionHeuristic>
             <localSearch>
                 <unionMoveSelector>
-                    <subListChangeMoveSelector />
-                    <listChangeMoveSelector />
-                    <listSwapMoveSelector />
+                    <changeMoveSelector />
                 </unionMoveSelector>
                 <acceptor>
                     <lateAcceptanceSize>100</lateAcceptanceSize>
@@ -76,19 +100,60 @@ ${startingTemperature}
     </solverBenchmark>
 
     <solverBenchmark>
-        <name>LAHC 200</name>
+        <name>LAHC 500</name>
         <solver>
+            <constructionHeuristic>
+                <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+            </constructionHeuristic>
             <localSearch>
                 <unionMoveSelector>
-                    <subListChangeMoveSelector />
-                    <listChangeMoveSelector />
-                    <listSwapMoveSelector />
+                    <changeMoveSelector />
                 </unionMoveSelector>
                 <acceptor>
-                    <lateAcceptanceSize>200</lateAcceptanceSize>
+                    <lateAcceptanceSize>500</lateAcceptanceSize>
                 </acceptor>
                 <forager>
                     <acceptedCountLimit>1</acceptedCountLimit>
+                </forager>
+            </localSearch>
+        </solver>
+    </solverBenchmark>
+
+    <solverBenchmark>
+        <name>Tabu 3 500</name>
+        <solver>
+            <constructionHeuristic>
+                <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+            </constructionHeuristic>
+            <localSearch>
+                <unionMoveSelector>
+                    <changeMoveSelector />
+                </unionMoveSelector>
+                <acceptor>
+                    <valueTabuSize>5</valueTabuSize>
+                </acceptor>
+                <forager>
+                    <acceptedCountLimit>500</acceptedCountLimit>
+                </forager>
+            </localSearch>
+        </solver>
+    </solverBenchmark>
+
+    <solverBenchmark>
+        <name>Tabu 10 2000</name>
+        <solver>
+            <constructionHeuristic>
+                <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+            </constructionHeuristic>
+            <localSearch>
+                <unionMoveSelector>
+                    <changeMoveSelector />
+                </unionMoveSelector>
+                <acceptor>
+                    <valueTabuSize>10</valueTabuSize>
+                </acceptor>
+                <forager>
+                    <acceptedCountLimit>2000</acceptedCountLimit>
                 </forager>
             </localSearch>
         </solver>
