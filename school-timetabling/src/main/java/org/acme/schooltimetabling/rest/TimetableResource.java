@@ -89,10 +89,11 @@ public class TimetableResource {
 
         solverManager.solveBuilder()
                 .withProblemId(problemId)
-                .withProblemFinder(id -> timetable) // Provide the timetable as the problem
-                .withBestSolutionConsumer(bestSolution -> timetable = bestSolution) // Update with the best solution
+                .withProblemFinder(id -> timetable)
+                .withBestSolutionConsumer(bestSolution ->
+                    timetable = bestSolution
+                )
                 .withExceptionHandler((id, exception) -> {
-                    // Log the error and reset the timetable state
                     LOGGER.error("Solver failed for problemId {}: {}", id, exception.getMessage(), exception);
                     timetable = null;
                 })
@@ -109,7 +110,7 @@ public class TimetableResource {
     @POST
     @Path("/stop-solver")
     public Response stopSolver() {
-        if (solverManager == null) {
+        if (solverManager == null || problemId == null) {
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity("SolverManager is not available.")
                     .build();
@@ -134,7 +135,7 @@ public class TimetableResource {
     @DELETE
     public Response clearTimetable() {
         timetable = null;
-        problemId = null; // Reset the problem ID
+        problemId = null;
         return Response.ok("Timetable cleared.").build();
     }
 }

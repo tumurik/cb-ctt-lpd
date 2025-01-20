@@ -31,6 +31,7 @@ public class DatasetParser {
             List<Room> rooms = new ArrayList<>();
             List<Curriculum> curricula = new ArrayList<>();
             List<UnavailabilityConstraint> unavailabilityConstraints = new ArrayList<>();
+            Map<String, Course> courseIdMap = new HashMap<>(); // to reference id later
 
             String line;
             while ((line = reader.readLine()) != null) {
@@ -62,7 +63,9 @@ public class DatasetParser {
                         int numberOfLectures = Integer.parseInt(parts[2]);
                         int minWorkingDays = Integer.parseInt(parts[3]);
                         int numberOfStudents = Integer.parseInt(parts[4]);
-                        courses.add(new Course(courseId, teacher, numberOfLectures, minWorkingDays, numberOfStudents));
+                        Course c = new Course(courseId, teacher, numberOfLectures, minWorkingDays, numberOfStudents);
+                        courses.add(c);
+                        courseIdMap.put(courseId, c);
                     }
                 } else if (line.equals("ROOMS:")) {
                     for (int i = 0; i < roomsCount; i++) {
@@ -77,9 +80,18 @@ public class DatasetParser {
                         line = reader.readLine().trim();
                         String[] parts = line.split("\\s+");
                         String curriculumId = parts[0];
-                        int numberOfCourses = Integer.parseInt(parts[1]);
-                        List<String> courseIds = Arrays.asList(Arrays.copyOfRange(parts, 2, 2 + numberOfCourses));
-                        curricula.add(new Curriculum(curriculumId, courseIds));
+                        int numberOfCoursesInCurr = Integer.parseInt(parts[1]);
+                        // Next n items are course id
+                        List<String> courseIds = Arrays.asList(Arrays.copyOfRange(parts, 2, 2 + numberOfCoursesInCurr));
+                        List<Course> memberCourses = new ArrayList<>(numberOfCoursesInCurr);
+                        for (String cid : courseIds) {
+                            if (!courseIdMap.containsKey(cid)) {
+                                throw new IllegalStateException("Unknown courseId in curricula: " + cid);
+                            }
+                            memberCourses.add(courseIdMap.get(cid));
+                        }
+                        Curriculum curriculum = new Curriculum(curriculumId, memberCourses);
+                        curricula.add(curriculum);
                     }
                 } else if (line.equals("UNAVAILABILITY_CONSTRAINTS:")) {
                     for (int i = 0; i < constraintsCount; i++) {
@@ -88,27 +100,54 @@ public class DatasetParser {
                         String courseId = parts[0];
                         int day = Integer.parseInt(parts[1]);
                         int period = Integer.parseInt(parts[2]);
-                        unavailabilityConstraints.add(new UnavailabilityConstraint(courseId, day, period));
+                        if (!courseIdMap.containsKey(courseId)) {
+                            throw new IllegalStateException("Unknown courseId in constraints: " + courseId);
+                        }
+                        Course c = courseIdMap.get(courseId);
+                        unavailabilityConstraints.add(new UnavailabilityConstraint(c, day, period));
                     }
+                }
+            } // end reading file
+
+            // Create planning entities for lectures
+            List<Lecture> lectureList = new ArrayList<>();
+            for (Course c : courses) {
+                List<Curriculum> courseCurriculum = new ArrayList<>();
+                for (Curriculum curriculum : curricula) {
+                    if (curriculum.getMemberCourses().contains(c)) {
+                        courseCurriculum.add(curriculum);
+                    }
+                }
+
+                // add lectures with its curriculum
+                for (int i = 0; i < c.getNumberOfLectures(); i++) {
+                    String uniqueLectureId = c.getCourseId() + "_" + i;
+                    Lecture lecture = new Lecture(uniqueLectureId,c,courseCurriculum);
+                    lectureList.add(lecture);
                 }
             }
 
-            // Generate timeslots
-            List<Timeslot> timeslots = generateTimeslots(days, periodsPerDay);
-
-            return new Timetable(rooms, timeslots, unavailabilityConstraints, curricula, courses);
-        }
-    }
-
-    // Generates a list of Timeslots (days x timeslots)
-    public List<Timeslot> generateTimeslots(int days, int timeslotsPerDay) {
-        List<Timeslot> timeslots = new ArrayList<>();
-        for (int day = 0; day < days; day++) {
-            for (int timeslot = 0; timeslot < timeslotsPerDay; timeslot++) {
-                String id = "Day" + day + "-Timeslot" + timeslot;
-                timeslots.add(new Timeslot(id, day, timeslot));
+            // add dayRange and periodRange
+            List<Integer> dayRange = new ArrayList<>();
+            for (int d = 0; d < days; d++) {
+                dayRange.add(d);
             }
+            List<Integer> periodRange = new ArrayList<>();
+            for (int p = 0; p < periodsPerDay; p++) {
+                periodRange.add(p);
+            }
+
+            Timetable solution = new Timetable(
+                    courses,
+                    rooms,
+                    curricula,
+                    unavailabilityConstraints,
+                    lectureList,
+                    dayRange,
+                    periodRange
+            );
+
+            return solution;
         }
-        return timeslots;
     }
 }

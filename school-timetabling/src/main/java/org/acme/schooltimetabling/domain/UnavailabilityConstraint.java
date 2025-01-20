@@ -2,27 +2,27 @@ package org.acme.schooltimetabling.domain;
 
 public class UnavailabilityConstraint {
 
-    private String courseId; // Course ID with the constraint
-    private int day;         // Cannot be scheduled
+    private Course course; // Course ID with the constraint
+    private int day; // Cannot be scheduled day/period
     private int period;
 
     // Constructors
     public UnavailabilityConstraint() {
     }
 
-    public UnavailabilityConstraint(String courseId, int day, int period) {
-        this.courseId = courseId;
+    public UnavailabilityConstraint(Course course, int day, int period) {
+        this.course = course;
         this.day = day;
         this.period = period;
     }
 
     // Getters and setters
-    public String getCourseId() {
-        return courseId;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     public int getDay() {
@@ -44,7 +44,7 @@ public class UnavailabilityConstraint {
     @Override
     public String toString() {
         return "UnavailabilityConstraint{" +
-                "courseId='" + courseId + '\'' +
+                "course='" + course + '\'' +
                 ", day=" + day +
                 ", period=" + period +
                 '}';

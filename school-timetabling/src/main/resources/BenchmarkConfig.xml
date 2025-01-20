@@ -2,40 +2,62 @@
 <plannerBenchmark xmlns="https://timefold.ai/xsd/benchmark" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="https://timefold.ai/xsd/benchmark https://timefold.ai/xsd/benchmark/benchmark.xsd">
 
-    <benchmarkDirectory>local/data/</benchmarkDirectory>
+    <benchmarkDirectory>benchmarkReports</benchmarkDirectory>
 
     <inheritedSolverBenchmark>
         <solver>
             <solutionClass>org.acme.schooltimetabling.domain.Timetable</solutionClass>
-            <entityClass>org.acme.schooltimetabling.domain.Course</entityClass>
+            <entityClass>org.acme.schooltimetabling.domain.Lecture</entityClass>
+
+<!--            <scoreDirectorFactory>-->
+<!--                <easyScoreCalculatorClass>org.acme.schooltimetabling.solver.EasyCostFunction</easyScoreCalculatorClass>-->
+<!--            </scoreDirectorFactory>-->
 
             <scoreDirectorFactory>
-                <easyScoreCalculatorClass>org.acme.schooltimetabling.solver.EasyCostFunction</easyScoreCalculatorClass>
+                <constraintProviderClass>org.acme.schooltimetabling.solver.TimetableConstraintProvider</constraintProviderClass>
             </scoreDirectorFactory>
+
         </solver>
         <problemBenchmarks>
             <inputSolutionFile>datasets/comp001.ctt</inputSolutionFile>
             <inputSolutionFile>datasets/comp008.ctt</inputSolutionFile>
+            <problemStatisticType>BEST_SCORE</problemStatisticType>
+            <problemStatisticType>STEP_SCORE</problemStatisticType>
             <singleStatisticType>PICKED_MOVE_TYPE_BEST_SCORE_DIFF</singleStatisticType>
             <singleStatisticType>CONSTRAINT_MATCH_TOTAL_BEST_SCORE</singleStatisticType>
         </problemBenchmarks>
     </inheritedSolverBenchmark>
 
-<!--    <list ["1hard/10soft", "1hard/20soft", "1hard/50soft", "1hard/70soft"] as startingTemperature>-->
+<!--
+<list ["1hard/10soft", "1hard/20soft", "1hard/50soft", "1hard/70soft"] as startingTemperature>
+</list>
+${startingTemperature}
+-->
+
     <solverBenchmark>
-        <name>Simulated Annealing startingTemperature ${startingTemperature?replace("/", "_")}</name>
+        <name>Simulated Annealing startingTemperature 1hard20soft</name>
         <solver>
             <localSearch>
                 <acceptor>
-                    <simulatedAnnealingStartingTemperature>${startingTemperature}</simulatedAnnealingStartingTemperature>
+                    <simulatedAnnealingStartingTemperature>1hard/20soft</simulatedAnnealingStartingTemperature>
                 </acceptor>
             </localSearch>
         </solver>
     </solverBenchmark>
-<!--    </list>-->
 
     <solverBenchmark>
-        <name>LAHC</name>
+        <name>Simulated Annealing startingTemperature 1hard50soft</name>
+        <solver>
+            <localSearch>
+                <acceptor>
+                    <simulatedAnnealingStartingTemperature>1hard/50soft</simulatedAnnealingStartingTemperature>
+                </acceptor>
+            </localSearch>
+        </solver>
+    </solverBenchmark>
+
+    <solverBenchmark>
+        <name>LAHC 100</name>
         <solver>
             <localSearch>
                 <unionMoveSelector>
@@ -45,6 +67,25 @@
                 </unionMoveSelector>
                 <acceptor>
                     <lateAcceptanceSize>100</lateAcceptanceSize>
+                </acceptor>
+                <forager>
+                    <acceptedCountLimit>1</acceptedCountLimit>
+                </forager>
+            </localSearch>
+        </solver>
+    </solverBenchmark>
+
+    <solverBenchmark>
+        <name>LAHC 200</name>
+        <solver>
+            <localSearch>
+                <unionMoveSelector>
+                    <subListChangeMoveSelector />
+                    <listChangeMoveSelector />
+                    <listSwapMoveSelector />
+                </unionMoveSelector>
+                <acceptor>
+                    <lateAcceptanceSize>200</lateAcceptanceSize>
                 </acceptor>
                 <forager>
                     <acceptedCountLimit>1</acceptedCountLimit>

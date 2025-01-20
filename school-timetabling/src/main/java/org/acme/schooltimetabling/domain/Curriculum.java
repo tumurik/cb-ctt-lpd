@@ -7,40 +7,40 @@ import java.util.List;
 public class Curriculum {
 
     @PlanningId
-    private String id;
-    private List<String> courseIds; // List of course IDs
+    private String curriculumId;
+    private List<Course> memberCourses; // List of curriculum courses
 
     // Constructors
     public Curriculum() {
     }
 
-    public Curriculum(String id, List<String> courseIds) {
-        this.id = id;
-        this.courseIds = courseIds;
+    public Curriculum(String curriculumId, List<Course> memberCourses) {
+        this.curriculumId = curriculumId;
+        this.memberCourses = memberCourses;
     }
 
     // Getters and setters
-    public String getId() {
-        return id;
+    public String getCurriculumId() {
+        return curriculumId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCurriculumId(String curriculumId) {
+        this.curriculumId = curriculumId;
     }
 
-    public List<String> getCourseIds() {
-        return courseIds;
+    public List<Course> getMemberCourses() {
+        return memberCourses;
     }
 
-    public void setCourseIds(List<String> courseIds) {
-        this.courseIds = courseIds;
+    public void setMemberCourses (List<Course> courseIds) {
+        this.memberCourses = memberCourses;
     }
 
     @Override
     public String toString() {
         return "Curriculum{" +
-                "id='" + id + '\'' +
-                ", courseIds=" + courseIds +
+                "curriculumId='" + curriculumId + '\'' +
+                ", memberCourses=" + memberCourses +
                 '}';
     }
 }

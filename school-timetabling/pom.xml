@@ -17,6 +17,7 @@
     <version.compiler.plugin>3.13.0</version.compiler.plugin>
     <version.resources.plugin>3.3.1</version.resources.plugin>
     <version.surefire.plugin>3.5.2</version.surefire.plugin>
+    <version.execmaven.plugin>3.5.0</version.execmaven.plugin>
   </properties>
 
   <dependencyManagement>
@@ -58,6 +59,10 @@
     <dependency>
       <groupId>ai.timefold.solver</groupId>
       <artifactId>timefold-solver-quarkus-jackson</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>ai.timefold.solver</groupId>
+      <artifactId>timefold-solver-benchmark</artifactId>
     </dependency>
 
     <!-- Testing -->
@@ -155,8 +160,26 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${version.surefire.plugin}</version>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>${version.execmaven.plugin}</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <mainClass>org.acme.schooltimetabling.TimetableBenchmarkRunner</mainClass>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
   <profiles>
     <profile>

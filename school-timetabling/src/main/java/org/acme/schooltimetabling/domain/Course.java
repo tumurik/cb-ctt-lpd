@@ -1,51 +1,35 @@
 package org.acme.schooltimetabling.domain;
 
-import ai.timefold.solver.core.api.domain.entity.PlanningEntity;
 import ai.timefold.solver.core.api.domain.lookup.PlanningId;
-import ai.timefold.solver.core.api.domain.variable.PlanningVariable;
 
-@PlanningEntity
 public class Course {
 
     @PlanningId
-    private String id;
-
-    private String teacher; // Teacher id
-    private int numberOfLectures; // Lectures required
-    private int minWorkingDays; // Minimum days distribute to
-    private int numberOfStudents; // Enrolled students
-
-    @PlanningVariable(valueRangeProviderRefs = "timeslotRange")
-    private Timeslot timeslot;
-
-    @PlanningVariable(valueRangeProviderRefs = "roomRange")
-    private Room room;
+    private String courseId;
+    private String teacher;
+    private int numberOfLectures; // Number of lectures required
+    private int minWorkingDays; // Minimum working days needed
+    private int numberOfStudents; // Number of students enrolled
 
     // Constructors
     public Course() {
     }
 
-    public Course(String id, String teacher, int numberOfLectures, int minWorkingDays, int numberOfStudents) {
-        this.id = id;
+    public Course(String courseId, String teacher, int numberOfLectures, int minWorkingDays, int numberOfStudents) {
+        this.courseId = courseId;
         this.teacher = teacher;
         this.numberOfLectures = numberOfLectures;
         this.minWorkingDays = minWorkingDays;
         this.numberOfStudents = numberOfStudents;
     }
 
-    public Course(String id, String teacher, int numberOfLectures, int minWorkingDays, int numberOfStudents, Timeslot timeslot, Room room) {
-        this(id, teacher, numberOfLectures, minWorkingDays, numberOfStudents);
-        this.timeslot = timeslot;
-        this.room = room;
-    }
-
     // Getters and setters
-    public String getId() {
-        return id;
+    public String getCourseId() {
+        return courseId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
     public String getTeacher() {
@@ -80,32 +64,15 @@ public class Course {
         this.numberOfStudents = numberOfStudents;
     }
 
-    public Timeslot getTimeslot() {
-        return timeslot;
-    }
-
-    public void setTimeslot(Timeslot timeslot) {
-        this.timeslot = timeslot;
-    }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
 
     @Override
     public String toString() {
         return "Course{" +
-                "id='" + id + '\'' +
+                "courseId='" + courseId + '\'' +
                 ", teacher='" + teacher + '\'' +
                 ", numberOfLectures=" + numberOfLectures +
                 ", minWorkingDays=" + minWorkingDays +
                 ", numberOfStudents=" + numberOfStudents +
-                ", timeslot=" + (timeslot != null ? timeslot : "Unassigned") +
-                ", room=" + (room != null ? room : "Unassigned") +
                 '}';
     }
 }

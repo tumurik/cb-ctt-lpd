@@ -14,24 +14,30 @@ public class Timetable {
 
     // Problem facts
     @ProblemFactCollectionProperty
-    @ValueRangeProvider(id = "roomRange")
+    private List<Course> courseList;
+
+    @ProblemFactCollectionProperty
     private List<Room> roomList;
-
-    @ProblemFactCollectionProperty
-    @ValueRangeProvider(id = "timeslotRange")
-    private List<Timeslot> timeslotList;
-
-    @ProblemFactCollectionProperty
-    private List<UnavailabilityConstraint> unavailabilityConstraintList;
 
     @ProblemFactCollectionProperty
     private List<Curriculum> curriculumList;
 
-    // Planning entities
-    @PlanningEntityCollectionProperty
-    private List<Course> courseList;
+    @ProblemFactCollectionProperty
+    private List<UnavailabilityConstraint> unavailabilityConstraintList;
 
-    // Planning score
+    @PlanningEntityCollectionProperty
+    private List<Lecture> lectureList;
+
+    // For day and period variables
+    @ValueRangeProvider(id = "dayRange")
+    private List<Integer> dayRange;
+
+    @ValueRangeProvider(id = "periodRange")
+    private List<Integer> periodRange;
+
+    @ValueRangeProvider(id = "roomRange")
+    private List<Room> roomRange;
+
     @PlanningScore
     private HardSoftScore score;
 
@@ -39,74 +45,41 @@ public class Timetable {
     public Timetable() {
     }
 
-    public Timetable(List<Room> roomList, List<Timeslot> timeslotList, List<UnavailabilityConstraint> unavailabilityConstraintList,
-                     List<Curriculum> curriculumList, List<Course> courseList) {
-        this.roomList = roomList;
-        this.timeslotList = timeslotList;
-        this.unavailabilityConstraintList = unavailabilityConstraintList;
-        this.curriculumList = curriculumList;
+    public Timetable(List<Course> courseList,
+                     List<Room> roomList,
+                     List<Curriculum> curriculumList,
+                     List<UnavailabilityConstraint> unavailabilityConstraintList,
+                     List<Lecture> lectureList,
+                     List<Integer> dayRange,
+                     List<Integer> periodRange) {
         this.courseList = courseList;
-        this.score = HardSoftScore.ZERO;
+        this.roomList = roomList;
+        this.curriculumList = curriculumList;
+        this.unavailabilityConstraintList = unavailabilityConstraintList;
+        this.lectureList = lectureList;
+        this.dayRange = dayRange;
+        this.periodRange = periodRange;
+        this.roomRange = roomList;
     }
 
     // Getters and setters
-    public List<Room> getRoomList() {
-        return roomList;
-    }
+    public List<Course> getCourseList() { return courseList; }
 
-    public void setRoomList(List<Room> roomList) {
-        this.roomList = roomList;
-    }
+    public List<Room> getRoomList() { return roomList; }
 
-    public List<Timeslot> getTimeslotList() {
-        return timeslotList;
-    }
+    public List<Curriculum> getCurriculumList() { return curriculumList; }
 
-    public void setTimeslotList(List<Timeslot> timeslotList) {
-        this.timeslotList = timeslotList;
-    }
+    public List<UnavailabilityConstraint> getUnavailabilityConstraintList() { return unavailabilityConstraintList; }
 
-    public List<UnavailabilityConstraint> getUnavailabilityConstraintList() {
-        return unavailabilityConstraintList;
-    }
+    public List<Lecture> getLectureList() { return lectureList; }
 
-    public void setUnavailabilityConstraintList(List<UnavailabilityConstraint> unavailabilityConstraintList) {
-        this.unavailabilityConstraintList = unavailabilityConstraintList;
-    }
+    public List<Integer> getDayRange() { return dayRange; }
 
-    public List<Curriculum> getCurriculumList() {
-        return curriculumList;
-    }
+    public List<Integer> getPeriodRange() { return periodRange; }
 
-    public void setCurriculumList(List<Curriculum> curriculumList) {
-        this.curriculumList = curriculumList;
-    }
+    public List<Room> getRoomRange() { return roomRange; }
 
-    public List<Course> getCourseList() {
-        return courseList;
-    }
+    public HardSoftScore getScore() { return score; }
 
-    public void setCourseList(List<Course> courseList) {
-        this.courseList = courseList;
-    }
-
-    public HardSoftScore getScore() {
-        return score;
-    }
-
-    public void setScore(HardSoftScore score) {
-        this.score = score;
-    }
-
-    @Override
-    public String toString() {
-        return "Timetable{" +
-                "roomList=" + roomList +
-                ", timeslotList=" + timeslotList +
-                ", unavailabilityConstraintList=" + unavailabilityConstraintList +
-                ", curriculumList=" + curriculumList +
-                ", courseList=" + courseList +
-                ", score=" + score +
-                '}';
-    }
+    public void setScore(HardSoftScore score) { this.score = score; }
 }
