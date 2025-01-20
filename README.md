@@ -59,3 +59,6 @@ It initiates with Iterative Forward Search (IFS) + Conflict-based Statistics (CB
 And balance Hill Climbing (HC), Great Deluge (GD) and Simulated Annealing (SA) to improve results. 
 
 Results of benchmark:
+
+Results of benchmark:
+https://github.com/tumurik/cb-ctt-lpd/blob/main/scorelpd.PNG
